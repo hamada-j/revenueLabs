@@ -10,7 +10,6 @@ const mySQL = require('./db/mysqlDB');
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 const swaggerOptions = require('./libs/swagger');
-
 /** ==========================================
  
                   ROUTING

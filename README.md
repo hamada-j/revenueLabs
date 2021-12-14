@@ -14,7 +14,7 @@ It possible to run this app locally with in project or with docker compose. For 
 
 - `$ cd revenueLabs`
 
-#### With-in the folder run the following command:
+#### Within the folder run the following command:
 
 - `revenueLabs/$ docker-compose build`
 - `revenueLabs/$ docker-compose up`
