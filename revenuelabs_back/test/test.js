@@ -51,11 +51,11 @@ test('GET /test, test 404 the response of the API for unknowns url',
 });
 
 // One civilization by Id
-test('GET /all_civilizations/:id, test get a civilization by random id from the external api', 
+test('GET /all-civilizations/:id, test get a civilization by random id from the external api', 
   async () => {
     try{
       await supertest(app)
-      .get(`/all_civilizations/${id}`)
+      .get(`/all-civilizations/${id}`)
       .expect(200)
       .expect('Content-Type', /json/)
       .then((response) => {
@@ -63,16 +63,16 @@ test('GET /all_civilizations/:id, test get a civilization by random id from the 
         expect(response.body.civilization[0].id).toEqual(id);
       }).catch((error) => { console.log(error);});
     }catch(err){
-      console.log('error /all_civilizations/:id ', err);
+      console.log('error /all-civilizations/:id ', err);
     } 
 });
 
 // All civilizations
-test('GET /all_civilizations, get all civilizations on this endpoint from external api.', 
+test('GET /all-civilizations, get all civilizations on this endpoint from external api.', 
   async () => {
     try{
     await api
-      .get('/all_civilizations')
+      .get('/all-civilizations')
       .expect(200)
       .then( (response) => {
         expect(response.body).toBeTruthy();
@@ -82,18 +82,18 @@ test('GET /all_civilizations, get all civilizations on this endpoint from extern
         }
       }).catch((error) => { console.log(error);});
     } catch(err) {
-      console.log('error GET /all_civilizations ---> ', err);
+      console.log('error GET /all-civilizations ---> ', err);
     } 
 });
 
 // Extra data
-test(`GET /civilization_extra_data, get the extra data for one civilization.`, 
+test(`GET /civilization-extra-data, get the extra data for one civilization.`, 
   async () => {
     try{
       const civilization = await externalAPI.getData(`${API_CIVILIZATION}/1`);
       const data = { url: civilization.unique_tech[0]};
     await api
-      .post(`/civilization_extra_data`)
+      .post(`/civilization-extra-data`)
       .expect(200)
       .send(data)
       .then( (response) => {
@@ -101,11 +101,11 @@ test(`GET /civilization_extra_data, get the extra data for one civilization.`,
         expect(Array.isArray(response.body.extraData)).toBeTruthy();
       }).catch((error) => { console.log(error);});
     } catch(err) {
-      console.log('error GET /civilization_extra_data ---> ', err);
+      console.log('error GET /civilization-extra-data ---> ', err);
     } 
 });
 
-test('GET /all_favorite_civilizations/:userId, create a user with a string of ids of favorite civilizations, create a token to get a this ids from MySQL database in Cloud', 
+test('GET /all-favorite-civilizations/:userId, create a user with a string of ids of favorite civilizations, create a token to get a this ids from MySQL database in Cloud', 
   async () => {
     try{
       const ids = '1,2,3';
@@ -128,7 +128,7 @@ test('GET /all_favorite_civilizations/:userId, create a user with a string of id
       const arrayFavoritesCivilizationsIds = [];
 
       await api
-      .get(`/all_favorite_civilizations/${userSQL.id}`)
+      .get(`/all-favorite-civilizations/${userSQL.id}`)
       .set(commonHeaders)
       .expect(200)
       .then( (response) => {
@@ -141,12 +141,12 @@ test('GET /all_favorite_civilizations/:userId, create a user with a string of id
         
       }).catch((error) => { console.log(error);});
     } catch(err) {
-      console.log('error GET all_favorite_civilizations/:idUser ----> ', err);
+      console.log('error GET all-favorite-civilizations/:idUser ----> ', err);
     } 
 });
 
 // Update
-test(`GET /update_all_favorite_civilizations , update a user fav civilizations`, 
+test(`GET /update-all-favorite-civilizations , update a user fav civilizations`, 
   async () => {
     try{
       const ids = '1,2,3';
@@ -178,7 +178,7 @@ test(`GET /update_all_favorite_civilizations , update a user fav civilizations`,
       const arrayFavoritesCivilizationsIds = [];
 
      await api
-      .put(`/update_all_favorite_civilizations`)
+      .put(`/update-all-favorite-civilizations`)
       .set(commonHeaders)
       .send(data)
       .expect(200)
@@ -198,14 +198,14 @@ test(`GET /update_all_favorite_civilizations , update a user fav civilizations`,
 
 
 // Register
-test(`GET /register_with_username, register a user (3 min to 10 max characters).`, 
+test(`GET /register-with-username, register a user (3 min to 10 max characters).`, 
   async () => {
     try{
       const user = {
         userName: name(),
       } 
     await api
-      .post(`/register_with_username`)
+      .post(`/register-with-username`)
       .send(user)
       .expect(201)
       .then( (response) => {
@@ -222,7 +222,7 @@ test(`GET /register_with_username, register a user (3 min to 10 max characters).
 
 
 // Login
-test(`GET /login_with_username, login a user in system.`, 
+test(`GET /login-with-username, login a user in system.`, 
   async () => {
     try{
       const user = {
@@ -235,7 +235,7 @@ test(`GET /login_with_username, login a user in system.`,
       });
 
     await api
-      .post(`/login_with_username`)
+      .post(`/login-with-username`)
       .send(user)
       .expect(201)
       .then( (response) => {

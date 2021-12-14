@@ -19,7 +19,7 @@ It possible to run this app locally with in project or with docker compose. For 
 - `revenueLabs/$ docker-compose build`
 - `revenueLabs/$ docker-compose up`
 
-#### Ones is done, in browser navigate to http://localhost:4200/
+#### Ones is done, in browser navigate to http://localhost:4200/ or http://localhost:3000/api-docs/ to interact with swagger.
 
 ### revenueLabs_back
 
@@ -46,77 +46,4 @@ To run the front side with angular, it is necessary download the dependencies fr
 
 **Code review** :
 
-- Respect the lines and spaces, to follow an order and a pattern throughout the code.
-
-```javascript
-export async function resendOfferCustomer(req: any, res: express.Response) {
-
-    db.HotelRequest.findAll({
-
-        where: { offerToCustomerEmailCount: { [Op.between]: [1, 2] } },
-        attributes: ["id"],
-        include: [
-            {
-            model: db.TripRequest,
-            where: { cancelled: false },
-            required: true,
-            },
-        ],
-
-    }).then().catch()
-```
-
-- Structures of the brackets, etc. Because it allows a faster reading and to see the beginning and end of a function, object, etc.
-
-```javascript
-                {
-                    model: db.Destination,
-                    attributes: ["code"],
-                    include: [
-                        {
-                            model: db.I18NDestination,
-                            attributes: ["name"],
-                            where: { lang },
-                            required: false,
-                        },
-                    ],
-                },
-            ],
-        },
-    ],
-}
-
-```
-
-- Sort exports and dependencies, to locate and standardize the code in general.
-
-```javascript
-import * as moment from "moment";
-import * as mailer from "../util/mailer";
-import * as options from "./optionsFindByPk";
-
-import { db } from "../../db/database";
-import { diffMoment } from "./diffMoment";
-```
-
-- Extract and make independent:
-
-1. Large objects, to saturate the code better.
-2. Reusable functions and their dependencies in a separate file, and avoid rewriting code more than once. In Utils folder.
-3. Independent methods.
-
-```
-revenueLabs
- |
- +-- reviewCode
-     |
-     +--
-        diffMoment.js
-        optionsFindByPk.js
-        resendOfferCustomer.js
- |
- docker-compose.yml
- unLICENSE
- .gitignore
- README.md
-```
+The seconde parte, in the root of the project the **refactorCode.ts** file is my approche to refactor the code and try my best in clean code and coding.
