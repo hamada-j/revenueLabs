@@ -19,13 +19,13 @@ const auth = require('../controller/auth');
 *   name: revenueLabs_back
 *   description: Build a small REST API Reads data from external api and serves responses as JSON documents, register/login a user and make get a favorite civilization witch she/he selected limited to 3 choices.
 */
-// Auth
+
 /**
 * @swagger
 * securityDefinitions:
 *   authentication:
 *     type: apiKey  
-*     name: Authorization
+*     name: token
 *     in: header
 *
 */
@@ -41,7 +41,6 @@ const auth = require('../controller/auth');
 *       url:
 *         type: string
 */
-
 
 /**
 * @swagger
@@ -68,20 +67,18 @@ const auth = require('../controller/auth');
 *     type: object
 *     required:
 *       - userName
-*       - security: [ { bearerAuth: [] } ]
 *     properties:
 *       userName:
 *         type: string
 *         security: object
 */
 
-
 /**
 * @swagger
 * /all_civilizations:
 *   get:
 *     summary: "Get all civilizations form the external api and serve them to front"
-*     tags: [Get]
+*     tags: [Get All Civilizations]
 *     produces:
 *       - application/json:
 *         content:
@@ -134,7 +131,7 @@ router.get("/all_civilizations/:id", getAllCivilizations.getDataById);
 * /civilization_extra_data:
 *   post:
 *     summary: "The data of properties of a civilization"
-*     tags: [Post getMoreDataForCivilization]
+*     tags: [Post For More Data Of Civilization]
 *     produces:
 *       - application/json:
 *         content:
@@ -169,7 +166,7 @@ router.post("/civilization_extra_data", getMoreDataForCivilization.getData);
 * /all_favorite_civilizations/{userId}:
 *   get:
 *     summary: "Get all civilizations with the favorite civilizations of an usr form the external api and serve them to front"
-*     tags: [Get Favorite Civilizations]
+*     tags: [Get Favorite Civilizations With Fav User]
 *     produces:
 *       - application/json:
 *         content:
@@ -177,7 +174,7 @@ router.post("/civilization_extra_data", getMoreDataForCivilization.getData);
 *             schema:
 *               type: object
 *     parameters:
-*       - in: query
+*       - in: path
 *         name: userId
 *         schema:
 *           type: integer
@@ -199,7 +196,7 @@ router.get("/all_favorite_civilizations/:userId", tMiddleware.checkToken, getFav
 /**
 * @swagger
 * /update_all_favorite_civilizations:
-*   patch:
+*   put:
 *     summary: "Update favorite_civilizations"
 *     tags: [Update Favorite Civilizations]
 *     produces:
@@ -215,6 +212,8 @@ router.get("/all_favorite_civilizations/:userId", tMiddleware.checkToken, getFav
 *         description: object to update a fav civilizations.
 *         schema:
 *            $ref: "#/definitions/updateSchema"
+*     security:
+*       - authentication: []
 *     requestBody:
 *      content:
 *       application/json:

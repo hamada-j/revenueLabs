@@ -12,6 +12,6 @@ services:
     image: revenuelabs_front
     build: revenuelabs_front 
     ports:
-      - "4200:4200"
+      - 4200:4200
 volumes:
   data:

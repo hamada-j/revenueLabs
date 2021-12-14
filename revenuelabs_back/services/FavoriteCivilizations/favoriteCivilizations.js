@@ -13,6 +13,13 @@ const addFavoriteCivilizations = (userId, favoriteCivilizations) => {
   });
 };
 
+// const addFavoriteCivilizations =  (userId, favoriteCivilizations) => {
+//   return db.query( 
+//     "INSERT into favoriteCivilizations ( userId, favoriteCivilizations ) values (?,?)",
+//     [ userId, favoriteCivilizations ],
+//   );
+// };
+
 const getFavoriteCivilizations = userId => {
   return new Promise((resolve, reject) => {
     db.query(
@@ -26,6 +33,7 @@ const getFavoriteCivilizations = userId => {
     );
   });
 };
+
 
 const updateFavoriteCivilizations = (favoriteCivilizations, userId) => {
   return new Promise((resolve, reject) => {

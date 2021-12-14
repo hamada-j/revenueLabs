@@ -6,8 +6,8 @@ const moment = require("moment");
 const checkToken = (req, res, next) => {
   
   if (!req.headers["token"]) {
-    return res.status(431).json({
-      message: " It is necessary add headers"
+    return res.status(417).json({
+      message: " It is necessary add token to headers "
     });
   }
 
@@ -17,14 +17,14 @@ const checkToken = (req, res, next) => {
   try {
     payload = jwt.decode(token, process.env.TOKEN);
   } catch (err) {
-    return res.status(431).json({
+    return res.status(401).json({
       message: "It is not possible to decode the Token"
     });
   }
 
   const dateNow = moment().unix();
   if (dateNow > payload.dateExpiration) {
-    return res.status(431).json({
+    return res.status(401).json({
       message: "The toke has expired.",
     });
   }

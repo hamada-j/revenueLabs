@@ -1,11 +1,11 @@
 'use strict';
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require("body-parser");
 const cors = require("cors");
-require('dotenv').config();
 const mySQL = require('./db/mysqlDB');
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');

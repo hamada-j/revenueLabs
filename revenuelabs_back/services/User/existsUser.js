@@ -4,7 +4,7 @@ const nameExists = pName => {
 
   return new Promise((resolve, reject) => {
     db.query(
-      "select * from users where userName = ?",
+      "SELECT * FROM users WHERE userName = ?",
       [pName],
       (err, rows) => {
         if (err) return reject(err);

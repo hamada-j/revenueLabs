@@ -17,11 +17,12 @@ exports.register = async (req, res) => {
     }
     const result = await newUser.create(user);
     const userSQL = await checkUser.nameExists(user.userName);
-    await favoriteCivilizations.addFavoriteCivilizations(userSQL.id, '0').then((response) => {
-      res.status(201).json({user: userSQL, result: result, success: createToken(user)}); 
-    });         
+    await favoriteCivilizations.addFavoriteCivilizations(userSQL.id, '0')
+    res.status(201).json({user: userSQL, result: result, success: createToken(user)}); 
+         
   } catch (err) {
-    return res.status(401).json(errors.array()); 
+    //return res.status(401).json(errors.array()); 
+    return res.status(401).json(err);
   }
 }
 
@@ -29,7 +30,7 @@ exports.login = async (req, res) => {
   try {
     const name = req.body.userName;
     const user = await checkUser.nameExists(name);
-    if (!user || user === null || user === undefined) {
+    if (!user) {
       res.status(401).json({ error: `error in this user name: ${ name }` });
     } else {
       res.status(201).json({ user: user, success: createToken(user)}); 
