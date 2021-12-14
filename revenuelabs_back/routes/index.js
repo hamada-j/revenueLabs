@@ -75,7 +75,7 @@ const auth = require('../controller/auth');
 
 /**
 * @swagger
-* /all_civilizations:
+* /all-civilizations:
 *   get:
 *     summary: "Get all civilizations form the external api and serve them to front"
 *     tags: [Get All Civilizations]
@@ -94,11 +94,11 @@ const auth = require('../controller/auth');
 *         description: Could not get data from external api or Server
 *
 */
-router.get("/all_civilizations", getAllCivilizations.getData);
+router.get("/all-civilizations", getAllCivilizations.getData);
 
 /**
 * @swagger
-* /all_civilizations/{id}:
+* /all-civilizations/{id}:
 *   get:
 *     summary: "Get a civilization by id form the external api and serve them to front"
 *     tags: [Get Civilization by Id]
@@ -124,11 +124,11 @@ router.get("/all_civilizations", getAllCivilizations.getData);
 *         description: Could not get data from DB or Server
 *
 */
-router.get("/all_civilizations/:id", getAllCivilizations.getDataById);
+router.get("/all-civilizations/:id", getAllCivilizations.getDataById);
 
 /**
 * @swagger
-* /civilization_extra_data:
+* /civilization-extra-data:
 *   post:
 *     summary: "The data of properties of a civilization"
 *     tags: [Post For More Data Of Civilization]
@@ -158,12 +158,12 @@ router.get("/all_civilizations/:id", getAllCivilizations.getDataById);
 *       502:
 *         description: Internal Server Error
 */
-router.post("/civilization_extra_data", getMoreDataForCivilization.getData);
+router.post("/civilization-extra-data", getMoreDataForCivilization.getData);
 
 
 /**
 * @swagger
-* /all_favorite_civilizations/{userId}:
+* /all-favorite-civilizations/{userId}:
 *   get:
 *     summary: "Get all civilizations with the favorite civilizations of an usr form the external api and serve them to front"
 *     tags: [Get Favorite Civilizations With Fav User]
@@ -190,14 +190,14 @@ router.post("/civilization_extra_data", getMoreDataForCivilization.getData);
 *         description: Could not get data from DB or Server
 *
 */
-router.get("/all_favorite_civilizations/:userId", tMiddleware.checkToken, getFavoriteCivilizationsUser.getData);
+router.get("/all-favorite-civilizations/:userId", tMiddleware.checkToken, getFavoriteCivilizationsUser.getData);
 
 
 /**
 * @swagger
-* /update_all_favorite_civilizations:
+* /update-all-favorite-civilizations:
 *   put:
-*     summary: "Update favorite_civilizations"
+*     summary: "Update favorite-civilizations"
 *     tags: [Update Favorite Civilizations]
 *     produces:
 *       - application/json:
@@ -230,12 +230,12 @@ router.get("/all_favorite_civilizations/:userId", tMiddleware.checkToken, getFav
 *         description: Validation errors
 *
 */
-router.put("/update_all_favorite_civilizations", tMiddleware.checkToken, getFavoriteCivilizationsUser.updateData);
+router.put("/update-all-favorite-civilizations", tMiddleware.checkToken, getFavoriteCivilizationsUser.updateData);
 
 
 /**
 * @swagger
-* /register_with_username:
+* /register-with-username:
 *   post:
 *     summary: "Register a new user in the Api"
 *     tags: [Register a User]
@@ -268,7 +268,7 @@ router.put("/update_all_favorite_civilizations", tMiddleware.checkToken, getFavo
 *         description: Validation errors
 */
 router.post(
-  "/register_with_username",
+  "/register-with-username",
   [
     check("userName", "user name should be 3 or 10 characters")
       .isLength({ min: 3, max: 10 })
@@ -279,7 +279,7 @@ router.post(
 
 /**
 * @swagger
-* /login_with_username:
+* /login-with-username:
 *   post:
 *     summary: "Login a user in the Api with username"
 *     tags: [Login a User with UserName]
@@ -311,6 +311,6 @@ router.post(
 *       401:
 *         description: Validation errors
 */
-router.post("/login_with_username", auth.login);
+router.post("/login-with-username", auth.login);
 
 module.exports = router;

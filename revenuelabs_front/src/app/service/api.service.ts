@@ -22,7 +22,7 @@ export class ApiService {
 
   // HttpClient API get() method => Fetch all civilizations
   getCivilization(): Observable<Civilization> {
-    return this.http.get<Civilization>(`${this.apiURL}/all_civilizations`)
+    return this.http.get<Civilization>(`${this.apiURL}/all-civilizations`)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -31,7 +31,7 @@ export class ApiService {
 
   // HttpClient API get() method => Fetch one civilization by id
   getOneCivilization(id: number): Observable<Civilization> {
-    return this.http.get<Civilization>(`${this.apiURL}/all_civilizations/${id}`)
+    return this.http.get<Civilization>(`${this.apiURL}/all-civilizations/${id}`)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -40,12 +40,12 @@ export class ApiService {
 
   // HttpClient API post() method => Fetch extra data
   postUrlExtraData(url: string): Promise<any> {
-    return this.http.post<any>(`${this.apiURL}/civilization_extra_data`, {url}).toPromise();
+    return this.http.post<any>(`${this.apiURL}/civilization-extra-data`, {url}).toPromise();
   }
 
   // HttpClient API post() method => Fetch extra data for a civilization
   getMoreDataCivilization(url: string): Observable<any> {
-    return this.http.post<any>(this.apiURL + '/civilization_extra_data', {url})
+    return this.http.post<any>(this.apiURL + '/civilization-extra-data', {url})
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -54,7 +54,7 @@ export class ApiService {
 
   // HttpClient API get() method => Fetch all civilizations login/register user
   getFavoriteCivilizations(userId: string): Observable<Civilization> {
-    return this.http.get<Civilization>(`${this.apiURL}/all_favorite_civilizations/${userId}`, this.createHeaders())
+    return this.http.get<Civilization>(`${this.apiURL}/all-favorite-civilizations/${userId}`, this.createHeaders())
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -63,7 +63,7 @@ export class ApiService {
 
   // HttpClient API get() method => Update fav civilizations
   updateFavoriteCivilization(data: {}): Observable<Civilization> {
-    return this.http.put<Civilization>(`${this.apiURL}/update_all_favorite_civilizations`, data, this.createHeaders())
+    return this.http.put<Civilization>(`${this.apiURL}/update-all-favorite-civilizations`, data, this.createHeaders())
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -73,7 +73,7 @@ export class ApiService {
 
   // HttpClient API post() method => login user
   login(form: {}): Observable<User> {
-    return this.http.post<User>(`${this.apiURL}/login_with_username`, form)
+    return this.http.post<User>(`${this.apiURL}/login-with-username`, form)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -82,7 +82,7 @@ export class ApiService {
 
   // HttpClient API post() method => register user
   register(form: {}): Observable<User> {
-    return this.http.post<User>(`${this.apiURL}/register_with_username`, form)
+    return this.http.post<User>(`${this.apiURL}/register-with-username`, form)
     .pipe(
       retry(1),
       catchError(this.handleError)
