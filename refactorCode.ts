@@ -1,10 +1,13 @@
 import express from 'express';
 import moment from 'moment';
-
+// dividir los importes en tipos 
 import { db } from '../../db/database';
 import * as mailer from '../util/mailer';
+
+//valibales y constantes de uso global
 const lang = 'CAS';
 
+// Funciones que generan elementos u objeto  para no saturar el codigo
 const options = () => ({
   include: [
     {
@@ -61,7 +64,6 @@ const options = () => ({
     },
   ],
 });
-
 
 const sendEmail = (sendMail, emailHR) => {
   setTimeout(() => {
