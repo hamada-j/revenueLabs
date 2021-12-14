@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  height: 100%;
+  border: 8px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav {
+  padding: 20px;
+  background-color: #ffd740;
+}
+
+.logo {
+  display: block;
+  width: 4%;
+  height: 90%;
+  border-radius: 2px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-drawer-container,
+mat-drawer-content {
+  width: 100%;
+  background-color: rgb(236, 236, 197);
+}
+// <mat-drawer-content class="mat-drawer-content ng-star-inserted" style="margin-left: 266px;">

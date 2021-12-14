@@ -1,0 +1,20 @@
+<div *ngFor="let createIn of createIn">
+  <h4>id: {{ createIn?.id }}</h4>
+  <h4>name: {{ createIn?.name }}</h4>
+  <h4>age: {{ createIn?.age }} age: string;</h4>
+  <h4>expansion: {{ createIn?.expansion }}</h4>
+
+  <h4>armor: {{ createIn?.armor }}</h4>
+  <h4>hit_points: {{ createIn?.hit_points }}</h4>
+  <h4>attack: {{ createIn?.attack }}</h4>
+  <h4>reload_time: {{ createIn?.reload_time }}</h4>
+  <h4>
+    cost: Food {{ createIn?.cost.Food }}, Gold
+    {{ createIn?.cost.Gold }}
+  </h4>
+
+  <h4>range: {{ createIn?.attack_bonus }}</h4>
+  <h4>special: {{ createIn?.reload_time }}</h4>
+  <h4>line_of_sight: {{ createIn?.line_of_sight }}</h4>
+  <h4>build_time: {{ createIn?.build_time }}</h4>
+</div>

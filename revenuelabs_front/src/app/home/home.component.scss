@@ -1,0 +1,32 @@
+.container-civilization {
+  width: 100%;
+  background-color: rgb(229, 235, 189);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.card-civilization {
+  order: 4;
+  flex-grow: 4;
+  background-color: rgb(116, 103, 88);
+  flex-shrink: 3;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  width: 25%;
+  padding: 1%;
+  margin: 1%;
+}
+
+button {
+  background-color: #ffd740;
+  color: rgb(9, 10, 9);
+  width: 100%;
+}
+
+// @media only screen and (min-width: 1068px) {
+//   button {
+//     width: 100%;
+//   }
+// }

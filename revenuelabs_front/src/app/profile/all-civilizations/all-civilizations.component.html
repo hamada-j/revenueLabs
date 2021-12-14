@@ -1,0 +1,34 @@
+<div class="container-civilization">
+  <div
+    class="card-civilization"
+    [ngClass]="{
+      'card-civilization': civilization?.favoriteCivilizations === false,
+      'card-civilization-fav': civilization?.favoriteCivilizations === true
+    }"
+    *ngFor="let civilization of arrFavoriteCivilizations"
+  >
+    <section class="example-section">
+      <mat-checkbox
+        (change)="updateFavoriteCivilizations($event, civilization?.id)"
+        class="example-margin"
+        [(ngModel)]="civilization.favoriteCivilizations"
+        >Make it Favorite Civilization</mat-checkbox
+      >
+    </section>
+    <h2>{{ civilization?.name }}</h2>
+    <h4>Expansion: {{ civilization?.expansion }}</h4>
+    <h4>Army Type: {{ civilization?.army_type }}</h4>
+    <h4>Team Bonus: {{ civilization?.team_bonus }}</h4>
+    <button
+      mat-button
+      (click)="
+        handleRedirectToCivilization(
+          civilization?.id,
+          civilization?.favoriteCivilizations
+        )
+      "
+    >
+      See more date of {{ civilization?.name }} Civilization
+    </button>
+  </div>
+</div>

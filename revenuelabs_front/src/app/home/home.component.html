@@ -1,0 +1,17 @@
+<div class="container-civilization">
+  <div class="card-civilization" *ngFor="let civilization of arrCivilizations">
+    <!-- [ngStyle]="{ 'background-color': getRandomColor2() }" -->
+    <h2>{{ civilization?.name }}</h2>
+    <h4>Expansion: {{ civilization?.expansion }}</h4>
+    <h4>Army Type: {{ civilization?.army_type }}</h4>
+    <h4>Team Bonus: {{ civilization?.team_bonus }}</h4>
+    <div class="button-container">
+      <button
+        mat-button
+        (click)="handleRedirectToCivilization(civilization?.id)"
+      >
+        See more about {{ civilization?.name }}
+      </button>
+    </div>
+  </div>
+</div>

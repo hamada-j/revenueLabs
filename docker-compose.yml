@@ -1,0 +1,17 @@
+version: "3.4" 
+
+services:
+  revenuelabs_back:
+    image: revenuelabs_back
+    build: revenuelabs_back
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+  revenuelabs_front: 
+    image: revenuelabs_front
+    build: revenuelabs_front 
+    ports:
+      - "4200:4200"
+volumes:
+  data:

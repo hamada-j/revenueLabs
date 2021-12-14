@@ -1,0 +1,86 @@
+<mat-toolbar color="accent">
+  <div class="sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <mat-icon aria-hidden="false" aria-label="Example list icon"
+        >list</mat-icon
+      >
+    </button>
+    <span>revenueLabs</span>
+  </div>
+  <span class="spacer"></span>
+
+  <img src="../assets/img/logo.png" alt="logo" class="logo" />
+</mat-toolbar>
+
+<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <mat-divider></mat-divider>
+    <div *ngIf="login">
+      <p>{{ welcome }}</p>
+      <h2>{{ user }}</h2>
+      <p>your favorite civilization are:</p>
+      <!-- <p>fav: {{ favoriteCivilizations | json }}</p> -->
+      <ul *ngFor="let civilization of favoriteCivilizations">
+        <li>{{ civilization }}</li>
+      </ul>
+    </div>
+    <br />
+    <button (click)="handleRedirectToHome()" mat-raised-button>
+      All Civilizations
+    </button>
+    <br />
+    <br />
+    <mat-divider></mat-divider>
+    <br />
+    <div *ngIf="!login">
+      <p *ngIf="showLogin">Access to your account</p>
+      <form *ngIf="showLogin" [formGroup]="form" (ngSubmit)="onSubmitLogin()">
+        <input type="text" class="form-control" formControlName="userName" />
+        <br />
+        <br />
+        <button mat-raised-button *ngIf="showLogin" type="submit">Login</button>
+      </form>
+
+      <br />
+      <button (click)="showLogin = !showLogin" mat-raised-button>
+        <span *ngIf="showLogin" (click)="cancel()">Cancel</span>
+        <span *ngIf="!showLogin">Login</span>
+      </button>
+      <br />
+      <br />
+      <mat-divider></mat-divider>
+      <br />
+      <p *ngIf="showRegister">Create to your account</p>
+      <form
+        *ngIf="showRegister"
+        [formGroup]="form"
+        (ngSubmit)="onSubmitRegister()"
+      >
+        <input type="text" class="form-control" formControlName="userName" />
+        <p>{{ form.controls.userName.errors | json }}</p>
+        <br />
+        <button mat-raised-button *ngIf="showRegister" type="submit">
+          Register
+        </button>
+      </form>
+      <br />
+      <button (click)="showRegister = !showRegister" mat-raised-button>
+        <span *ngIf="showRegister" (click)="cancel()">Cancel</span>
+        <span *ngIf="!showRegister">Register</span>
+      </button>
+      <br />
+      <br />
+      <mat-divider></mat-divider>
+    </div>
+    <div *ngIf="login">
+      <p>your session will expire in {{ session }} minutes</p>
+      <button mat-raised-button>
+        <span (click)="logout($event)">Logout</span>
+      </button>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

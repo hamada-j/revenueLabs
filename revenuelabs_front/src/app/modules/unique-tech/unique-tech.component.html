@@ -1,0 +1,46 @@
+<div *ngFor="let uniqueTech of uniqueTech">
+  <h4>id: {{ uniqueTech?.id }}</h4>
+  <h4>name: {{ uniqueTech?.name }}</h4>
+  <h4>age: {{ uniqueTech?.age }} age: string;</h4>
+  <h4>expansion: {{ uniqueTech?.expansion }}</h4>
+
+  <h4>description: {{ uniqueTech?.description }}</h4>
+  <h4>build_time: {{ uniqueTech?.build_time }}</h4>
+
+  <h4>
+    cost: Food {{ uniqueTech?.cost.Food }}, Gold
+    {{ uniqueTech?.cost.Gold }}
+  </h4>
+
+  <button
+    mat-button
+    (click)="handleGetUrlAppliesTo(uniqueTech?.applies_to)"
+    [ngStyle]="{
+      'background-color': !showAppliesTo ? '#8fbc8f' : '#b94e48'
+    }"
+  >
+    {{ !showAppliesTo ? "View Applies To" : "see less" }}
+  </button>
+  <br />
+
+  <div *ngIf="showAppliesTo">
+    <h4>Applies To:</h4>
+    <app-applies-to [appliesTo]="appliesTo"> </app-applies-to>
+  </div>
+  <br />
+  <br />
+  <button
+    mat-button
+    (click)="handleGetUrlDevelopsIn(uniqueTech?.develops_in)"
+    [ngStyle]="{
+      'background-color': !showDevelopsIn ? '#8fbc8f' : '#b94e48'
+    }"
+  >
+    {{ !showDevelopsIn ? "View Develops In" : "see less" }}
+  </button>
+  <br />
+  <div *ngIf="showDevelopsIn">
+    <h4>Develops In:</h4>
+    <app-develops-in [developsIn]="developsIn"> </app-develops-in>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<h3>Unique Unit:</h3>
+<div *ngFor="let uniqueUnit of uniqueUnit">
+  <h4>id: {{ uniqueUnit?.id }}</h4>
+  <h4>name: {{ uniqueUnit?.name }}</h4>
+  <h4>age: {{ uniqueUnit?.age }}</h4>
+  <h4>description: {{ uniqueUnit?.description }}</h4>
+  <h4>expansion: {{ uniqueUnit?.expansion }}</h4>
+  <h4>armor: {{ uniqueUnit?.armor }}</h4>
+  <h4>hit_points: {{ uniqueUnit?.hit_points }}</h4>
+  <h4>attack: {{ uniqueUnit?.attack }}</h4>
+  <h4>attack_bonus: {{ uniqueUnit?.attack_bonus }}</h4>
+  <h4>reload_time: {{ uniqueUnit?.reload_time }}</h4>
+  <h4>line_of_sight: {{ uniqueUnit?.line_of_sight }}</h4>
+  <h4>build_time: {{ uniqueUnit?.build_time }}</h4>
+  <h4>
+    cost: Food {{ uniqueUnit?.cost.Food }}, Gold
+    {{ uniqueUnit?.cost.Gold }}
+  </h4>
+
+  <button
+    mat-button
+    (click)="handleGetUrlCreatedIn(uniqueUnit?.created_in)"
+    [ngStyle]="{
+      'background-color': !showCreateIn ? '#8fbc8f' : '#b94e48'
+    }"
+  >
+    {{ !showCreateIn ? "View Create In" : "see less" }}
+  </button>
+
+  <br />
+
+  <div *ngIf="showCreateIn">
+    <h4>Create In:</h4>
+    <app-create-in [createIn]="createIn"></app-create-in>
+  </div>
+</div>

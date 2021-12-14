@@ -1,0 +1,43 @@
+<div *ngFor="let appliesTo of appliesTo">
+  <h4>id: {{ appliesTo?.id }}</h4>
+  <h4>name: {{ appliesTo?.name }}</h4>
+  <h4>expansion: {{ appliesTo?.expansion }}</h4>
+
+  <h4>army_type: {{ appliesTo?.army_type }}</h4>
+  <h4>civilization_bonus: {{ appliesTo?.civilization_bonus }}</h4>
+  <h4>team_bonus: {{ appliesTo?.team_bonus }}</h4>
+  <!-- PARA EVITAR BUCLE -->
+  <!-- <button
+    mat-button
+    (click)="handleGetUrlUniqueUnit2(appliesTo?.unique_unit)"
+    [ngStyle]="{
+      'background-color': !showUniqueUnit2 ? '#8fbc8f' : '#b94e48'
+    }"
+  >
+    {{ !showUniqueUnit2 ? "View Unique Unit" : "see less" }}
+  </button>
+  <br />
+
+  <div *ngIf="showUniqueUnit2">
+    <h4>Unique Unit:</h4>
+    <app-unique-unit [uniqueUnit]="uniqueUnit"></app-unique-unit>
+  </div>
+
+  <br />
+  <br />
+  <button
+    mat-button
+    (click)="handleGetUrlUniqueTech2(appliesTo?.unique_tech)"
+    [ngStyle]="{
+      'background-color': !showUniqueTech2 ? '#8fbc8f' : '#b94e48'
+    }"
+  >
+    {{ !showUniqueTech2 ? "View Unique Unit" : "see less" }}
+  </button> -->
+  <br />
+
+  <div *ngIf="showUniqueTech2">
+    <h4>Unique Unit:</h4>
+    <app-unique-tech [uniqueTech]="uniqueTech"> </app-unique-tech>
+  </div>
+</div>

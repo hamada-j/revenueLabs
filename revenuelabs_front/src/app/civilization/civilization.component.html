@@ -1,0 +1,54 @@
+<div>
+  <div *ngFor="let civilization of civilization" class="container-civilization">
+    <div class="card">
+      <h2>{{ civilization?.name }} Civilization</h2>
+      <h3>Expansion: {{ civilization?.expansion }}</h3>
+      <h4>Army Type: {{ civilization?.army_type }}</h4>
+      <h4>Team Bonus: {{ civilization?.team_bonus }}</h4>
+    </div>
+    <div class="card">
+      <button
+        mat-button
+        (click)="handleGetUrlUniqueUnit(civilization?.unique_unit)"
+        [ngStyle]="{
+          'background-color': !showUniqueUnit ? '#8fbc8f' : '#b94e48'
+        }"
+      >
+        {{ !showUniqueUnit ? "View Unique Unit" : "see less" }}
+      </button>
+      <br />
+      <!--  -->
+      <div *ngIf="showUniqueUnit">
+        <h3>Unique Unit:</h3>
+        <app-unique-unit [uniqueUnit]="uniqueUnit"></app-unique-unit>
+      </div>
+    </div>
+    <div class="card">
+      <button
+        mat-button
+        (click)="handleGetUrlUniqueTech(civilization?.unique_tech)"
+        [ngStyle]="{
+          'background-color': !showUniqueTech ? '#8fbc8f' : '#b94e48'
+        }"
+      >
+        {{ !showUniqueTech ? "View Unique Tech" : "see less" }}
+      </button>
+      <br />
+
+      <div *ngIf="showUniqueTech">
+        <h4>Unique Tech:</h4>
+        <app-unique-tech [uniqueTech]="uniqueTech"> </app-unique-tech>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Civilization Bonus:</h4>
+      <div *ngFor="let bonus of civilization?.civilization_bonus">
+        <h5>Bonus of {{ bonus }}</h5>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align: center; color: rgb(185, 102, 102); font-size: 30px">
+    {{ message }}
+  </p>
+</div>
