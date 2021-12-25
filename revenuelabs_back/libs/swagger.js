@@ -2,14 +2,14 @@
 
 const options = {
     swaggerDefinition: {
-        "description": "Build a small REST API Reads data from database and serves responses as JSON documents. Filters on the data are implemented, with query parameters.",
+        "description": "It is a small application that fetches data in JSON format from an external API. The data is handled internally by a rest full api NodeJS and Express framework and SQL in the cloud with MySQL database and front is Angular-13 app.",
         "contact": {
             name: "Hamada",
-            github: "https://github.com/hamada-j/Importer-Challenge.git"
+            github: "https://github.com/hamada-j/revenueLabs"
         },
         
         "info": {
-            "title": "Importer-Challenge" ,
+            "title": "revenueLabs" ,
             "version": "1.0.0"
         },
         servers: [process.env.URL],

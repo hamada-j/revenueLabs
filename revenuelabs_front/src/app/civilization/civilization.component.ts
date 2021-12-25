@@ -42,8 +42,7 @@ export class CivilizationComponent implements OnInit {
         if (url.length === 2){
           await this.APIService.postUrlExtraData(url[1]).then((response) => {
             let arr = [];
-            arr.push(res.extraData[0])
-            arr.push(response.extraData[0])
+            arr.push(res.extraData[0], response.extraData[0])
             let output = [];
             mergeObjects(arr, output);
             this.uniqueUnit = output;

@@ -7,7 +7,7 @@ const checkToken = (req, res, next) => {
   
   if (!req.headers["token"]) {
     return res.status(417).json({
-      message: " It is necessary add token to headers "
+      message: " It is necessary add token to headers"
     });
   }
 
